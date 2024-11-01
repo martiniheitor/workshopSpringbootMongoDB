@@ -42,6 +42,18 @@ public class UserService {
 		repo.deleteById(id);
 	}
 	
+	//funções responsáveis por atualizar os dados dos usuários
+	public User update(User obj) {
+		User newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
 	//Função para passar os dados do UserDTO para User
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
