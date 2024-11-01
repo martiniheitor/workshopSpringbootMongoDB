@@ -36,6 +36,12 @@ public class UserService {
 		return repo.insert(obj);
 	}
 	
+	//Função para deletar usuários a partir do Id
+	public void delete(String id) {
+		findById(id);
+		repo.deleteById(id);
+	}
+	
 	//Função para passar os dados do UserDTO para User
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
