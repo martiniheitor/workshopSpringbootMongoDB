@@ -1,3 +1,4 @@
+//Classe responsável pela criação da idêntidade "User" no banco de dados
 package com.nelioalves.workshopmongo.domain;
 
 import java.io.Serializable;
