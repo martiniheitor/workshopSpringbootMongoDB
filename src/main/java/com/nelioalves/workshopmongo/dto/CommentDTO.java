@@ -8,26 +8,26 @@ public class CommentDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String texto;
+	private String text;
 	private Date date;
 	private AuthorDTO author;
 	
 	public CommentDTO() {
 	}
 	
-	public CommentDTO(String texto, Date date, AuthorDTO author) {
+	public CommentDTO(String text, Date date, AuthorDTO author) {
 		super();
-		this.texto = texto;
+		this.text = text;
 		this.date = date;
 		this.author = author;
 	}
 
-	public String getTexto() {
-		return texto;
+	public String getText() {
+		return text;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public Date getDate() {

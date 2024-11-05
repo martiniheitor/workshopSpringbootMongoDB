@@ -1,6 +1,7 @@
 //Classe intermediária entre Resource e Repository, contém a lógica das operações de manipulação de dados dos posts
 package com.nelioalves.workshopmongo.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,12 @@ public class PostService {
 	//Função para requisição de consulta de posts por título
 	public List<Post> findByTitle(String text){
 		return repo.searchTitle(text);
+	}
+	
+	//Função para requisição de consulta de um post a partir do texto contido ou do intervalo de tempo em que foi postado
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate){
+		maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000);
+		return repo.fullSearch(text, minDate, maxDate);
 	}
 	
 }
