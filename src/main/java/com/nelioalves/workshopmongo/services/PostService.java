@@ -1,6 +1,7 @@
 //Classe intermediária entre Resource e Repository, contém a lógica das operações de manipulação de dados dos posts
 package com.nelioalves.workshopmongo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,10 @@ public class PostService {
 		Optional<Post> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFounException("Objeto não encontrado!"));
 	}
+	
+	//Função para requisição de consulta de posts por título
+	public List<Post> findByTitle(String text){
+		return repo.findByTitleContainingIgnoreCase(text);
+	}
+	
 }
