@@ -2,9 +2,12 @@
 package com.nelioalves.workshopmongo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document (collection = "user")
@@ -16,6 +19,10 @@ public class User implements Serializable{
 	private String id;
 	private String name;
 	private String email;
+	
+	//Instanciação de listas dos posts do usuário como referências
+	@DBRef (lazy = true)
+	private List<Post> posts = new ArrayList<>();
 	
 	//Construtores da classe
 	public User() {
@@ -52,6 +59,10 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 
 	//hashCodes and equals
 	@Override
@@ -69,6 +80,10 @@ public class User implements Serializable{
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public List<Post> getPosts() {
+		return posts;
 	}
 	
 }
