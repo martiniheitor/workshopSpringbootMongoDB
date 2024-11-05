@@ -26,7 +26,7 @@ public class PostService {
 	
 	//Função para requisição de consulta de posts por título
 	public List<Post> findByTitle(String text){
-		return repo.findByTitleContainingIgnoreCase(text);
+		return repo.searchTitle(text);
 	}
 	
 }
